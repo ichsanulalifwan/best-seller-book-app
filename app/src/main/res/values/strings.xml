@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">The New York Times App</string>
+    <string name="title_fiction">Fiction</string>
+    <string name="title_nonfiction">Nonfiction</string>
+    <string name="title_favorite">Favorite</string>
+</resources>
