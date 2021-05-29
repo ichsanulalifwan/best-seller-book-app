@@ -6,14 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.dicoding.thenewyorktimespp.databinding.FragmentNotificationsBinding
+import com.dicoding.thenewyorktimespp.databinding.FragmentFavoriteBinding
 
 class FavoriteFragment : Fragment() {
 
     private lateinit var favoriteViewModel: FavoriteViewModel
-    private var _binding: FragmentNotificationsBinding? = null
+    private var _binding: FragmentFavoriteBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -23,15 +22,15 @@ class FavoriteFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         favoriteViewModel =
             ViewModelProvider(this).get(FavoriteViewModel::class.java)
 
-        _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
+        _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val textView: TextView = binding.textNotifications
-        favoriteViewModel.text.observe(viewLifecycleOwner, Observer {
+        favoriteViewModel.text.observe(viewLifecycleOwner, {
             textView.text = it
         })
         return root

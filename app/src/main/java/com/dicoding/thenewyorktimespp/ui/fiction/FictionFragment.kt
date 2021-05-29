@@ -6,14 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.dicoding.thenewyorktimespp.databinding.FragmentHomeBinding
+import com.dicoding.thenewyorktimespp.databinding.FragmentFictionBinding
 
 class FictionFragment : Fragment() {
 
     private lateinit var fictionViewModel: FictionViewModel
-    private var _binding: FragmentHomeBinding? = null
+    private var _binding: FragmentFictionBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -23,15 +22,15 @@ class FictionFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         fictionViewModel =
             ViewModelProvider(this).get(FictionViewModel::class.java)
 
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentFictionBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val textView: TextView = binding.textHome
-        fictionViewModel.text.observe(viewLifecycleOwner, Observer {
+        fictionViewModel.text.observe(viewLifecycleOwner, {
             textView.text = it
         })
         return root
