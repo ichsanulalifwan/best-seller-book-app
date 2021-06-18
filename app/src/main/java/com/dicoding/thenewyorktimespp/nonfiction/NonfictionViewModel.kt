@@ -1,4 +1,4 @@
-package com.dicoding.thenewyorktimespp.ui.nonfiction
+package com.dicoding.thenewyorktimespp.nonfiction
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

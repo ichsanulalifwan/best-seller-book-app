@@ -1,4 +1,4 @@
-package com.dicoding.thenewyorktimespp.ui.fiction
+package com.dicoding.thenewyorktimespp.fiction
 
 import android.os.Bundle
 import android.view.LayoutInflater

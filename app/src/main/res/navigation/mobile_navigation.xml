@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.dicoding.thenewyorktimespp.ui.fiction.FictionFragment"
+        android:name="com.dicoding.thenewyorktimespp.fiction.FictionFragment"
         android:label="@string/title_fiction"
         tools:layout="@layout/fragment_fiction" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.dicoding.thenewyorktimespp.ui.nonfiction.NonfictionFragment"
+        android:name="com.dicoding.thenewyorktimespp.nonfiction.NonfictionFragment"
         android:label="@string/title_nonfiction"
         tools:layout="@layout/fragment_nonfiction" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.dicoding.thenewyorktimespp.ui.favorite.FavoriteFragment"
+        android:name="com.dicoding.thenewyorktimespp.favorite.FavoriteFragment"
         android:label="@string/title_favorite"
         tools:layout="@layout/fragment_favorite" />
 </navigation>

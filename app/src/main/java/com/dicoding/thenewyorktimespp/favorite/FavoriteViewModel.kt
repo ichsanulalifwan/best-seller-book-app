@@ -1,4 +1,4 @@
-package com.dicoding.thenewyorktimespp.ui.favorite
+package com.dicoding.thenewyorktimespp.favorite
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
