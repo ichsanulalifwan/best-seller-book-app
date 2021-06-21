@@ -7,6 +7,7 @@ import com.dicoding.thenewyorktimespp.BuildConfig
 import com.dicoding.thenewyorktimespp.core.data.source.remote.network.ApiResponse
 import com.dicoding.thenewyorktimespp.core.data.source.remote.network.ApiService
 import com.dicoding.thenewyorktimespp.core.data.source.remote.response.BookListResponse
+import com.dicoding.thenewyorktimespp.core.data.source.remote.response.BooksItem
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,8 +27,8 @@ class RemoteDataSource private constructor(private val apiService: ApiService) {
             }
     }
 
-    fun getAllFiction(): LiveData<ApiResponse<List<BookListResponse>>> {
-        val resultData = MutableLiveData<ApiResponse<List<BookListResponse>>>()
+    fun getAllFiction(): LiveData<ApiResponse<List<BooksItem>>> {
+        val resultData = MutableLiveData<ApiResponse<List<BooksItem>>>()
 
         //get data fiction from remote api
         val client = apiService.getFiction(API_KEY)
@@ -51,8 +52,8 @@ class RemoteDataSource private constructor(private val apiService: ApiService) {
         return resultData
     }
 
-    fun getAllNonfiction(): LiveData<ApiResponse<List<BookListResponse>>> {
-        val resultData = MutableLiveData<ApiResponse<List<BookListResponse>>>()
+    fun getAllNonfiction(): LiveData<ApiResponse<List<BooksItem>>> {
+        val resultData = MutableLiveData<ApiResponse<List<BooksItem>>>()
 
         //get data nonfiction from remote api
         val client = apiService.getNonfiction(API_KEY)

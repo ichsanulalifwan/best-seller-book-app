@@ -2,6 +2,8 @@ package com.dicoding.thenewyorktimespp.core.data
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
+import com.dicoding.thenewyorktimespp.core.data.source.remote.network.ApiResponse
+import com.dicoding.thenewyorktimespp.core.utils.AppExecutors
 
 abstract class NetworkBoundResource<ResultType, RequestType>(private val mExecutors: AppExecutors) {
 
