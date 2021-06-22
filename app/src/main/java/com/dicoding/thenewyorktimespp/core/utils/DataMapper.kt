@@ -2,13 +2,13 @@ package com.dicoding.thenewyorktimespp.core.utils
 
 import com.dicoding.thenewyorktimespp.core.data.source.local.entity.FictionEntity
 import com.dicoding.thenewyorktimespp.core.data.source.local.entity.NonfictionEntity
-import com.dicoding.thenewyorktimespp.core.data.source.remote.response.BooksItem
-import com.dicoding.thenewyorktimespp.core.domain.model.Fiction
-import com.dicoding.thenewyorktimespp.core.domain.model.Nonfiction
+import com.dicoding.thenewyorktimespp.core.data.source.remote.response.fiction.FictionItem
+import com.dicoding.thenewyorktimespp.core.data.source.remote.response.nonfiction.NonfictionItem
+import com.dicoding.thenewyorktimespp.core.domain.model.Book
 
 object DataMapper {
 
-    fun mapResponsesToFictionEntities(input: List<BooksItem>): List<FictionEntity> {
+    fun mapResponsesToFictionEntities(input: List<FictionItem>): List<FictionEntity> {
         val fictionList = ArrayList<FictionEntity>()
         input.map {
             val fiction = FictionEntity(
@@ -30,9 +30,9 @@ object DataMapper {
         return fictionList
     }
 
-    fun mapEntitiesToFictionDomain(input: List<FictionEntity>): List<Fiction> =
+    fun mapEntitiesToFictionDomain(input: List<FictionEntity>): List<Book> =
         input.map {
-            Fiction(
+            Book(
                 primaryIsbn10 = it.primaryIsbn10,
                 primaryIsbn13 = it.primaryIsbn13,
                 rank = it.rank,
@@ -48,7 +48,7 @@ object DataMapper {
             )
         }
 
-    fun mapDomainToFictionEntity(input: Fiction) = FictionEntity(
+    fun mapDomainToFictionEntity(input: Book) = FictionEntity(
         primaryIsbn10 = input.primaryIsbn10,
         primaryIsbn13 = input.primaryIsbn13,
         rank = input.rank,
@@ -63,7 +63,7 @@ object DataMapper {
         isFavorite = false
     )
 
-    fun mapResponsesToNonfictionEntities(input: List<BooksItem>): List<NonfictionEntity> {
+    fun mapResponsesToNonfictionEntities(input: List<NonfictionItem>): List<NonfictionEntity> {
         val nonfictionList = ArrayList<NonfictionEntity>()
         input.map {
             val nonfiction = NonfictionEntity(
@@ -85,9 +85,9 @@ object DataMapper {
         return nonfictionList
     }
 
-    fun mapEntitiesToNonfictionDomain(input: List<NonfictionEntity>): List<Nonfiction> =
+    fun mapEntitiesToNonfictionDomain(input: List<NonfictionEntity>): List<Book> =
         input.map {
-            Nonfiction(
+            Book(
                 primaryIsbn10 = it.primaryIsbn10,
                 primaryIsbn13 = it.primaryIsbn13,
                 rank = it.rank,
@@ -103,7 +103,7 @@ object DataMapper {
             )
         }
 
-    fun mapDomainToNonfictionEntity(input: Nonfiction) = NonfictionEntity(
+    fun mapDomainToNonfictionEntity(input: Book) = NonfictionEntity(
         primaryIsbn10 = input.primaryIsbn10,
         primaryIsbn13 = input.primaryIsbn13,
         rank = input.rank,

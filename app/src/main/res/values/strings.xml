@@ -3,4 +3,5 @@
     <string name="title_fiction">Fiction</string>
     <string name="title_nonfiction">Nonfiction</string>
     <string name="title_favorite">Favorite</string>
+    <string name="something_wrong">Oops.. something went wrong</string>
 </resources>

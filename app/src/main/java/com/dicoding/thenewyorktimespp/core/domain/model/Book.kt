@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-class Nonfiction(
+data class Book(
     var primaryIsbn10: String,
     val primaryIsbn13: String,
     val rank: Int,

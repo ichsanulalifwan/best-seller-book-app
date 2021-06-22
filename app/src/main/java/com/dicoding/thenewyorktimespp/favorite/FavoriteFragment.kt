@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.dicoding.thenewyorktimespp.core.ui.ViewModelFactory
 import com.dicoding.thenewyorktimespp.databinding.FragmentFavoriteBinding
+import com.dicoding.thenewyorktimespp.fiction.FictionViewModel
 
 class FavoriteFragment : Fragment() {
 
@@ -22,8 +24,9 @@ class FavoriteFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        val factory = ViewModelFactory.getInstance(requireActivity())
         favoriteViewModel =
-            ViewModelProvider(this).get(FavoriteViewModel::class.java)
+            ViewModelProvider(this, factory)[FavoriteViewModel::class.java]
 
         _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
         return binding.root

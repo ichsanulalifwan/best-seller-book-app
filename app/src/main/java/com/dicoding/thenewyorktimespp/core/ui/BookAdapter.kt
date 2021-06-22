@@ -6,15 +6,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.dicoding.thenewyorktimespp.R
-import com.dicoding.thenewyorktimespp.core.domain.model.Fiction
+import com.dicoding.thenewyorktimespp.core.domain.model.Book
 import com.dicoding.thenewyorktimespp.databinding.ItemListBookBinding
 
 class BookAdapter : RecyclerView.Adapter<BookAdapter.ListViewHolder>() {
 
-    private var listData = ArrayList<Fiction>()
-    var onItemClick: ((Fiction) -> Unit)? = null
+    private var listData = ArrayList<Book>()
+    var onItemClick: ((Book) -> Unit)? = null
 
-    fun setData(newListData: List<Fiction>?) {
+    fun setData(newListData: List<Book>?) {
         if (newListData == null) return
         listData.clear()
         listData.addAll(newListData)
@@ -35,7 +35,7 @@ class BookAdapter : RecyclerView.Adapter<BookAdapter.ListViewHolder>() {
 
     inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = ItemListBookBinding.bind(itemView)
-        fun bind(data: Fiction) {
+        fun bind(data: Book) {
             with(binding) {
                 Glide.with(itemView.context)
                     .load(data.bookImage)

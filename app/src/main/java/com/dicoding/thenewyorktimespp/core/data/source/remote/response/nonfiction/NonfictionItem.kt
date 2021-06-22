@@ -1,8 +1,8 @@
-package com.dicoding.thenewyorktimespp.core.data.source.remote.response
+package com.dicoding.thenewyorktimespp.core.data.source.remote.response.nonfiction
 
 import com.google.gson.annotations.SerializedName
 
-data class BooksItem(
+data class NonfictionItem(
 
     @field:SerializedName("description")
     val description: String,
