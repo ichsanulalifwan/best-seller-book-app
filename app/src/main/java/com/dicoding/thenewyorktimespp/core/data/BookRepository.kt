@@ -50,7 +50,7 @@ class BookRepository private constructor(
         appExecutors.diskIO().execute { localDataSource.setFavoriteFiction(fictionEntity, state) }
     }
 
-    /*override fun getAllNonfiction(): LiveData<Resource<List<Nonfiction>>> =
+    override fun getAllNonfiction(): LiveData<Resource<List<Nonfiction>>> =
         object : NetworkBoundResource<List<Nonfiction>, List<BooksItem>>(appExecutors) {
             override fun loadFromDB(): LiveData<List<Nonfiction>> {
                 return Transformations.map(localDataSource.getAllNonfiction()) {
@@ -58,29 +58,30 @@ class BookRepository private constructor(
                 }
             }
 
-            override fun shouldFetch(data: List<Fiction>?): Boolean =
-                //data == null || data.isEmpty()
+            override fun shouldFetch(data: List<Nonfiction>?): Boolean =
+                // data == null || data.isEmpty()
                 true // ganti dengan true jika ingin selalu mengambil data dari internet
 
             override fun createCall(): LiveData<ApiResponse<List<BooksItem>>> =
                 remoteDataSource.getAllFiction()
 
             override fun saveCallResult(data: List<BooksItem>) {
-                val fictionList = DataMapper.mapResponsesToNonfictionEntities(data)
-                localDataSource.insertFiction(fictionList)
+                val nonfictionList = DataMapper.mapResponsesToNonfictionEntities(data)
+                localDataSource.insertNonfiction(nonfictionList)
             }
         }.asLiveData()
 
     override fun getFavoriteNonfiction(): LiveData<List<Nonfiction>> {
-        return Transformations.map(localDataSource.getFavoriteFiction()) {
-            DataMapper.mapEntitiesToFictionDomain(it)
+        return Transformations.map(localDataSource.getFavoriteNonfiction()) {
+            DataMapper.mapEntitiesToNonfictionDomain(it)
         }
     }
 
     override fun setFavoriteNonfiction(nonfiction: Nonfiction, state: Boolean) {
-     val fictionEntity = DataMapper.mapDomainToFictionEntity(fiction)
-     appExecutors.diskIO().execute { localDataSource.setFavoriteFiction(fictionEntity, state) }
-    }*/
+        val nonfictionEntity = DataMapper.mapDomainToNonfictionEntity(nonfiction)
+        appExecutors.diskIO()
+            .execute { localDataSource.setFavoriteNonfiction(nonfictionEntity, state) }
+    }
 
     companion object {
         @Volatile

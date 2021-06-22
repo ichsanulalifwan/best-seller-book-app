@@ -42,6 +42,7 @@ android {
 
 dependencies {
     // Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation "androidx.core:core-ktx:$core_version"
 
     // UI

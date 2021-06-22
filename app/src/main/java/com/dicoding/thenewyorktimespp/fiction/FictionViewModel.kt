@@ -1,13 +1,8 @@
 package com.dicoding.thenewyorktimespp.fiction
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.dicoding.thenewyorktimespp.core.domain.usecase.BookUseCase
 
-class FictionViewModel : ViewModel() {
-
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
-    }
-    val text: LiveData<String> = _text
+class FictionViewModel(bookUseCase: BookUseCase)  : ViewModel() {
+    val fiction = bookUseCase.getAllFiction()
 }

@@ -13,9 +13,9 @@ interface IBookRepository {
 
     fun setFavoriteFiction(fiction: Fiction, state: Boolean)
 
-    /*fun getAllNonfiction(): LiveData<Resource<List<Nonfiction>>>
+    fun getAllNonfiction(): LiveData<Resource<List<Nonfiction>>>
 
     fun getFavoriteNonfiction(): LiveData<List<Nonfiction>>
 
-    fun setFavoriteNonfiction(nonfiction: Nonfiction, state: Boolean)*/
+    fun setFavoriteNonfiction(nonfiction: Nonfiction, state: Boolean)
 }

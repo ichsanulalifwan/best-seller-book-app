@@ -1,13 +1,8 @@
 package com.dicoding.thenewyorktimespp.favorite
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.dicoding.thenewyorktimespp.core.domain.usecase.BookUseCase
 
-class FavoriteViewModel : ViewModel() {
-
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is notifications Fragment"
-    }
-    val text: LiveData<String> = _text
+class FavoriteViewModel(bookUseCase: BookUseCase) : ViewModel() {
+    val favoriteFiction = bookUseCase.getFavoriteFiction()
 }
