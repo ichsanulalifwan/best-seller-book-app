@@ -5,20 +5,19 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.navArgs
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.dicoding.thenewyorktimespp.R
 import com.dicoding.thenewyorktimespp.core.domain.model.Book
-import com.dicoding.thenewyorktimespp.core.ui.ViewModelFactory
 import com.dicoding.thenewyorktimespp.databinding.ActivityDetailBookBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailBookActivity : AppCompatActivity() {
 
-    private lateinit var detailBookViewModel: DetailBookViewModel
     private lateinit var binding: ActivityDetailBookBinding
+    private val detailBookViewModel: DetailBookViewModel by viewModel()
     private val args by navArgs<DetailBookActivityArgs>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,8 +27,8 @@ class DetailBookActivity : AppCompatActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val factory = ViewModelFactory.getInstance(this)
-        detailBookViewModel = ViewModelProvider(this, factory)[DetailBookViewModel::class.java]
+        /*val factory = ViewModelFactory.getInstance(this)
+        detailBookViewModel = ViewModelProvider(this, factory)[DetailBookViewModel::class.java]*/
 
         val selectedBook = args.book
         val type = args.type

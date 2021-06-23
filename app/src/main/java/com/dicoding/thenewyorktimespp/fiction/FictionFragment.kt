@@ -5,19 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.thenewyorktimespp.R
 import com.dicoding.thenewyorktimespp.core.data.Resource
 import com.dicoding.thenewyorktimespp.core.ui.BookAdapter
-import com.dicoding.thenewyorktimespp.core.ui.ViewModelFactory
 import com.dicoding.thenewyorktimespp.databinding.FragmentFictionBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FictionFragment : Fragment() {
 
-    private lateinit var fictionViewModel: FictionViewModel
     private lateinit var bookAdapter: BookAdapter
+    private val fictionViewModel: FictionViewModel by viewModel()
     private var _binding: FragmentFictionBinding? = null
 
     // This property is only valid between onCreateView and
@@ -29,9 +28,9 @@ class FictionFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val factory = ViewModelFactory.getInstance(requireActivity())
+        /*val factory = ViewModelFactory.getInstance(requireActivity())
         fictionViewModel =
-            ViewModelProvider(this, factory)[FictionViewModel::class.java]
+            ViewModelProvider(this, factory)[FictionViewModel::class.java]*/
 
         _binding = FragmentFictionBinding.inflate(inflater, container, false)
         return binding.root

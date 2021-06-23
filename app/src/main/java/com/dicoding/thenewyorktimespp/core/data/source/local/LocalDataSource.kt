@@ -5,7 +5,7 @@ import com.dicoding.thenewyorktimespp.core.data.source.local.entity.NonfictionEn
 import com.dicoding.thenewyorktimespp.core.data.source.local.room.BookDao
 import kotlinx.coroutines.flow.Flow
 
-class LocalDataSource private constructor(private val bookDao: BookDao) {
+class LocalDataSource(private val bookDao: BookDao) {
 
     fun getAllFiction(): Flow<List<FictionEntity>> = bookDao.getAllFiction()
 
@@ -30,12 +30,12 @@ class LocalDataSource private constructor(private val bookDao: BookDao) {
         bookDao.updateFavoriteNonfiction(nonfiction)
     }
 
-    companion object {
+    /*companion object {
         private var instance: LocalDataSource? = null
 
         fun getInstance(bookDao: BookDao): LocalDataSource =
             instance ?: synchronized(this) {
                 instance ?: LocalDataSource(bookDao)
             }
-    }
+    }*/
 }

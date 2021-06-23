@@ -5,19 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.thenewyorktimespp.R
 import com.dicoding.thenewyorktimespp.core.data.Resource
 import com.dicoding.thenewyorktimespp.core.ui.BookAdapter
-import com.dicoding.thenewyorktimespp.core.ui.ViewModelFactory
 import com.dicoding.thenewyorktimespp.databinding.FragmentNonfictionBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class NonfictionFragment : Fragment() {
 
-    private lateinit var nonfictionViewModel: NonfictionViewModel
     private lateinit var bookAdapter: BookAdapter
+    private val nonfictionViewModel: NonfictionViewModel by viewModel()
     private var _binding: FragmentNonfictionBinding? = null
 
     // This property is only valid between onCreateView and
@@ -29,9 +28,9 @@ class NonfictionFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val factory = ViewModelFactory.getInstance(requireActivity())
+        /*val factory = ViewModelFactory.getInstance(requireActivity())
         nonfictionViewModel =
-            ViewModelProvider(this, factory)[NonfictionViewModel::class.java]
+            ViewModelProvider(this, factory)[NonfictionViewModel::class.java]*/
 
         _binding = FragmentNonfictionBinding.inflate(inflater, container, false)
         return binding.root

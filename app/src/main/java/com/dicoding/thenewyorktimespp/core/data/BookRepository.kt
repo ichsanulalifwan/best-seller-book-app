@@ -12,7 +12,7 @@ import com.dicoding.thenewyorktimespp.core.utils.DataMapper
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-class BookRepository private constructor(
+class BookRepository(
     private val remoteDataSource: RemoteDataSource,
     private val localDataSource: LocalDataSource,
     private val appExecutors: AppExecutors
@@ -81,7 +81,7 @@ class BookRepository private constructor(
             .execute { localDataSource.setFavoriteNonfiction(nonfictionEntity, state) }
     }
 
-    companion object {
+    /*companion object {
         @Volatile
         private var instance: BookRepository? = null
 
@@ -93,5 +93,5 @@ class BookRepository private constructor(
             instance ?: synchronized(this) {
                 instance ?: BookRepository(remoteData, localData, appExecutors)
             }
-    }
+    }*/
 }

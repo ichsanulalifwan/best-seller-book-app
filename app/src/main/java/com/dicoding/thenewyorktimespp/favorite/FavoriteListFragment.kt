@@ -5,17 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.thenewyorktimespp.core.ui.BookAdapter
-import com.dicoding.thenewyorktimespp.core.ui.ViewModelFactory
 import com.dicoding.thenewyorktimespp.databinding.FragmentFavoriteListBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FavoriteListFragment : Fragment() {
 
-    private lateinit var favoriteListViewModel: FavoriteListViewModel
     private lateinit var bookAdapter: BookAdapter
+    private val favoriteListViewModel: FavoriteListViewModel by viewModel()
     private var _binding: FragmentFavoriteListBinding? = null
     private val binding get() = _binding!!
 
@@ -23,9 +22,9 @@ class FavoriteListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val factory = ViewModelFactory.getInstance(requireActivity())
+        /*val factory = ViewModelFactory.getInstance(requireActivity())
         favoriteListViewModel =
-            ViewModelProvider(this, factory)[FavoriteListViewModel::class.java]
+            ViewModelProvider(this, factory)[FavoriteListViewModel::class.java]*/
 
         _binding = FragmentFavoriteListBinding.inflate(inflater, container, false)
         return binding.root

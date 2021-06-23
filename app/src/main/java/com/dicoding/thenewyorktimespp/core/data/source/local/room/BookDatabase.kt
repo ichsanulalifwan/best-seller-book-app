@@ -1,8 +1,6 @@
 package com.dicoding.thenewyorktimespp.core.data.source.local.room
 
 import androidx.room.Database
-import androidx.room.Room
-import android.content.Context
 import androidx.room.RoomDatabase
 import com.dicoding.thenewyorktimespp.core.data.source.local.entity.FictionEntity
 import com.dicoding.thenewyorktimespp.core.data.source.local.entity.NonfictionEntity
@@ -16,7 +14,7 @@ abstract class BookDatabase : RoomDatabase() {
 
     abstract fun bookDao(): BookDao
 
-    companion object {
+    /*companion object {
         @Volatile
         private var INSTANCE: BookDatabase? = null
 
@@ -32,5 +30,5 @@ abstract class BookDatabase : RoomDatabase() {
                 INSTANCE = instance
                 instance
             }
-    }
+    }*/
 }
