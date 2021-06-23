@@ -1,7 +1,7 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.dynamic-feature'
     id 'kotlin-android'
-    id 'androidx.navigation.safeargs.kotlin'
+    id "androidx.navigation.safeargs.kotlin"
     id 'kotlin-android-extensions'
     id 'kotlin-kapt'
 }
@@ -13,15 +13,13 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.dicoding.thenewyorktimespp"
+        applicationId "com.dicoding.thenewyorktimesapp.favorite"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-        buildConfigField "String", "API_KEY", api_key
     }
 
     buildTypes {
@@ -38,22 +36,19 @@ android {
         jvmTarget = '1.8'
     }
     buildFeatures {
-        viewBinding true
+        viewBinding = true
     }
-    dynamicFeatures = [':favorite']
 }
 
 dependencies {
     implementation project(":core")
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    // Kotlin
+    implementation project(":app")
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
-    // ViewModel
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
-
-    // Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
     implementation "androidx.navigation:navigation-ui-ktx:$navigation_version"
-    implementation "androidx.navigation:navigation-dynamic-features-fragment:$navigation_version"
+    api "androidx.navigation:navigation-dynamic-features-fragment:$navigation_version"
+
+    // UI
+    implementation "androidx.viewpager2:viewpager2:$viewpager2_version"
 }

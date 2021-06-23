@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/favoriteFragment">
+
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.dicoding.thenewyorktimesapp.favorite.FavoriteFragment"
+        android:label="Favorite"
+        tools:layout="@layout/fragment_favorite">
+        <action
+            android:id="@+id/action_favoriteFragment_to_detailBookActivity2"
+            app:destination="@id/detailBookActivity2" />
+    </fragment>
+
+    <activity
+        android:id="@+id/detailBookActivity2"
+        android:name="com.dicoding.thenewyorktimesapp.detail.DetailBookActivity"
+        android:label="DetailBookActivity">
+        <argument
+            android:name="book"
+            app:argType="com.dicoding.thenewyorktimesapp.core.domain.model.Book" />
+        <argument
+            android:name="type"
+            app:argType="integer" />
+    </activity>
+</navigation>

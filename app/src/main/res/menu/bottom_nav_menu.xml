@@ -12,7 +12,7 @@
         android:title="@string/title_nonfiction" />
 
     <item
-        android:id="@+id/navigation_favorite"
+        android:id="@+id/favoriteGraph"
         android:icon="@drawable/ic_baseline_favorite_24"
         android:title="@string/title_favorite" />
 

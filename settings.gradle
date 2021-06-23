@@ -1,3 +1,4 @@
 rootProject.name = "The New York Times App"
 include ':app'
 include ':core'
+include ':favorite'

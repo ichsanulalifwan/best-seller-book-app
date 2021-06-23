@@ -17,4 +17,5 @@
     <string name="txt_amazon_product">Amazon Product</string>
     <string name="buy_on_amazon">Buy on Amazon</string>
     <string name="no_data">Empty Data</string>
+    <string name="detail_book">Detail Book</string>
 </resources>
