@@ -44,7 +44,7 @@ object DataMapper {
                 publisher = it.publisher,
                 bookImage = it.bookImage,
                 amazonProductUrl = it.amazonProductUrl,
-                isFavorite = false
+                isFavorite = it.isFavorite
             )
         }
 
@@ -60,7 +60,7 @@ object DataMapper {
         publisher = input.publisher,
         bookImage = input.bookImage,
         amazonProductUrl = input.amazonProductUrl,
-        isFavorite = false
+        isFavorite = input.isFavorite
     )
 
     fun mapResponsesToNonfictionEntities(input: List<NonfictionItem>): List<NonfictionEntity> {
@@ -99,7 +99,7 @@ object DataMapper {
                 publisher = it.publisher,
                 bookImage = it.bookImage,
                 amazonProductUrl = it.amazonProductUrl,
-                isFavorite = false
+                isFavorite = it.isFavorite
             )
         }
 
@@ -115,6 +115,6 @@ object DataMapper {
         publisher = input.publisher,
         bookImage = input.bookImage,
         amazonProductUrl = input.amazonProductUrl,
-        isFavorite = false
+        isFavorite = input.isFavorite
     )
 }

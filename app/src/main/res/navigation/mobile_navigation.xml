@@ -47,4 +47,10 @@
             android:name="type"
             app:argType="integer" />
     </activity>
+
+    <fragment
+        android:id="@+id/favoriteListFragment"
+        android:name="com.dicoding.thenewyorktimespp.favorite.FavoriteListFragment"
+        android:label="fragment_favorite_list"
+        tools:layout="@layout/fragment_favorite_list" />
 </navigation>

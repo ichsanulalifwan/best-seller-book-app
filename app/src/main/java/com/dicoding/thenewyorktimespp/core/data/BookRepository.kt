@@ -27,8 +27,8 @@ class BookRepository private constructor(
             }
 
             override fun shouldFetch(data: List<Book>?): Boolean =
-                // data == null || data.isEmpty()
-                true // ganti dengan true jika ingin selalu mengambil data dari internet
+                data == null || data.isEmpty()
+            //true // ganti dengan true jika ingin selalu mengambil data dari internet
 
             override fun createCall(): LiveData<ApiResponse<List<FictionItem>>> =
                 remoteDataSource.getAllFiction()
@@ -59,8 +59,8 @@ class BookRepository private constructor(
             }
 
             override fun shouldFetch(data: List<Book>?): Boolean =
-                // data == null || data.isEmpty()
-                true // ganti dengan true jika ingin selalu mengambil data dari internet*/
+                data == null || data.isEmpty()
+            // true // ganti dengan true jika ingin selalu mengambil data dari internet*/
 
             override fun createCall(): LiveData<ApiResponse<List<NonfictionItem>>> =
                 remoteDataSource.getAllNonfiction()

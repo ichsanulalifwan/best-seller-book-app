@@ -7,15 +7,6 @@ import com.dicoding.thenewyorktimespp.core.data.source.local.room.BookDao
 
 class LocalDataSource private constructor(private val bookDao: BookDao) {
 
-    companion object {
-        private var instance: LocalDataSource? = null
-
-        fun getInstance(bookDao: BookDao): LocalDataSource =
-            instance ?: synchronized(this) {
-                instance ?: LocalDataSource(bookDao)
-            }
-    }
-
     fun getAllFiction(): LiveData<List<FictionEntity>> = bookDao.getAllFiction()
 
     fun getFavoriteFiction(): LiveData<List<FictionEntity>> = bookDao.getFavoriteFiction()
@@ -36,5 +27,14 @@ class LocalDataSource private constructor(private val bookDao: BookDao) {
     fun setFavoriteNonfiction(nonfiction: NonfictionEntity, newState: Boolean) {
         nonfiction.isFavorite = newState
         bookDao.updateFavoriteNonfiction(nonfiction)
+    }
+
+    companion object {
+        private var instance: LocalDataSource? = null
+
+        fun getInstance(bookDao: BookDao): LocalDataSource =
+            instance ?: synchronized(this) {
+                instance ?: LocalDataSource(bookDao)
+            }
     }
 }
