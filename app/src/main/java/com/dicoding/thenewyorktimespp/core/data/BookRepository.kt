@@ -80,18 +80,4 @@ class BookRepository(
         appExecutors.diskIO()
             .execute { localDataSource.setFavoriteNonfiction(nonfictionEntity, state) }
     }
-
-    /*companion object {
-        @Volatile
-        private var instance: BookRepository? = null
-
-        fun getInstance(
-            remoteData: RemoteDataSource,
-            localData: LocalDataSource,
-            appExecutors: AppExecutors
-        ): BookRepository =
-            instance ?: synchronized(this) {
-                instance ?: BookRepository(remoteData, localData, appExecutors)
-            }
-    }*/
 }

@@ -28,10 +28,6 @@ class NonfictionFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        /*val factory = ViewModelFactory.getInstance(requireActivity())
-        nonfictionViewModel =
-            ViewModelProvider(this, factory)[NonfictionViewModel::class.java]*/
-
         _binding = FragmentNonfictionBinding.inflate(inflater, container, false)
         return binding.root
     }

@@ -59,15 +59,5 @@ class RemoteDataSource(private val apiService: ApiService) {
 
         private const val API_KEY = BuildConfig.API_KEY
         private const val TAG = "RemoteDataSource"
-
-        /*@Volatile
-        private var instance: RemoteDataSource? = null
-
-
-
-        fun getInstance(service: ApiService): RemoteDataSource =
-            instance ?: synchronized(this) {
-                instance ?: RemoteDataSource(service)
-            }*/
     }
 }

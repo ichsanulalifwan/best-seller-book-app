@@ -27,9 +27,6 @@ class DetailBookActivity : AppCompatActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        /*val factory = ViewModelFactory.getInstance(this)
-        detailBookViewModel = ViewModelProvider(this, factory)[DetailBookViewModel::class.java]*/
-
         val selectedBook = args.book
         val type = args.type
         showDetailBook(selectedBook, type)

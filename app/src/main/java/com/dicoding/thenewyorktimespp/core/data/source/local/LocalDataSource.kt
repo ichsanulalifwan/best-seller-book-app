@@ -29,13 +29,4 @@ class LocalDataSource(private val bookDao: BookDao) {
         nonfiction.isFavorite = newState
         bookDao.updateFavoriteNonfiction(nonfiction)
     }
-
-    /*companion object {
-        private var instance: LocalDataSource? = null
-
-        fun getInstance(bookDao: BookDao): LocalDataSource =
-            instance ?: synchronized(this) {
-                instance ?: LocalDataSource(bookDao)
-            }
-    }*/
 }

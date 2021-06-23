@@ -28,10 +28,6 @@ class FictionFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        /*val factory = ViewModelFactory.getInstance(requireActivity())
-        fictionViewModel =
-            ViewModelProvider(this, factory)[FictionViewModel::class.java]*/
-
         _binding = FragmentFictionBinding.inflate(inflater, container, false)
         return binding.root
     }

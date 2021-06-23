@@ -22,10 +22,6 @@ class FavoriteListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        /*val factory = ViewModelFactory.getInstance(requireActivity())
-        favoriteListViewModel =
-            ViewModelProvider(this, factory)[FavoriteListViewModel::class.java]*/
-
         _binding = FragmentFavoriteListBinding.inflate(inflater, container, false)
         return binding.root
     }
