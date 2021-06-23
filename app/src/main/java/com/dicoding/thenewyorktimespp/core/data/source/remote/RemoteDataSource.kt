@@ -1,69 +1,58 @@
 package com.dicoding.thenewyorktimespp.core.data.source.remote
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.dicoding.thenewyorktimespp.BuildConfig
 import com.dicoding.thenewyorktimespp.core.data.source.remote.network.ApiResponse
 import com.dicoding.thenewyorktimespp.core.data.source.remote.network.ApiService
 import com.dicoding.thenewyorktimespp.core.data.source.remote.response.fiction.FictionItem
-import com.dicoding.thenewyorktimespp.core.data.source.remote.response.fiction.FictionListResponse
 import com.dicoding.thenewyorktimespp.core.data.source.remote.response.nonfiction.NonfictionItem
-import com.dicoding.thenewyorktimespp.core.data.source.remote.response.nonfiction.NonfictionListResponse
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 
 class RemoteDataSource private constructor(private val apiService: ApiService) {
 
-    fun getAllFiction(): LiveData<ApiResponse<List<FictionItem>>> {
-        val resultData = MutableLiveData<ApiResponse<List<FictionItem>>>()
+    suspend fun getAllFiction(): Flow<ApiResponse<List<FictionItem>>> {
 
         //get data fiction from remote api
-        val client = apiService.getFiction(API_KEY)
+        return flow {
+            try {
+                val response = apiService.getFiction(API_KEY)
 
-        client.enqueue(object : Callback<FictionListResponse> {
-            override fun onResponse(
-                call: Call<FictionListResponse>,
-                response: Response<FictionListResponse>
-            ) {
-                val dataArray = response.body()?.results?.books
-                resultData.value =
-                    if (dataArray != null) ApiResponse.Success(dataArray) else ApiResponse.Empty
+                val dataArray = response.results.books
+
+                if (dataArray.isNotEmpty()) {
+                    emit(ApiResponse.Success(dataArray))
+                } else {
+                    emit(ApiResponse.Empty)
+                }
+            } catch (e: Exception) {
+                emit(ApiResponse.Error(e.toString()))
+                Log.e(TAG, e.toString())
             }
-
-            override fun onFailure(call: Call<FictionListResponse>, t: Throwable) {
-                resultData.value = ApiResponse.Error(t.message.toString())
-                Log.e(TAG, t.message.toString())
-            }
-        })
-
-        return resultData
+        }.flowOn(Dispatchers.IO)
     }
 
-    fun getAllNonfiction(): LiveData<ApiResponse<List<NonfictionItem>>> {
-        val resultData = MutableLiveData<ApiResponse<List<NonfictionItem>>>()
+    suspend fun getAllNonfiction(): Flow<ApiResponse<List<NonfictionItem>>> {
 
         // get data nonfiction from remote api
-        val client = apiService.getNonfiction(API_KEY)
+        return flow {
+            try {
+                val response = apiService.getNonfiction(API_KEY)
 
-        client.enqueue(object : Callback<NonfictionListResponse> {
-            override fun onResponse(
-                call: Call<NonfictionListResponse>,
-                response: Response<NonfictionListResponse>
-            ) {
-                val dataArray = response.body()?.results?.books
-                resultData.value =
-                    if (dataArray != null) ApiResponse.Success(dataArray) else ApiResponse.Empty
+                val dataArray = response.results.books
+
+                if (dataArray.isNotEmpty()) {
+                    emit(ApiResponse.Success(dataArray))
+                } else {
+                    emit(ApiResponse.Empty)
+                }
+            } catch (e: Exception) {
+                emit(ApiResponse.Error(e.toString()))
+                Log.e(TAG, e.toString())
             }
-
-            override fun onFailure(call: Call<NonfictionListResponse>, t: Throwable) {
-                resultData.value = ApiResponse.Error(t.message.toString())
-                Log.e(TAG, t.message.toString())
-            }
-        })
-
-        return resultData
+        }.flowOn(Dispatchers.IO)
     }
 
     companion object {

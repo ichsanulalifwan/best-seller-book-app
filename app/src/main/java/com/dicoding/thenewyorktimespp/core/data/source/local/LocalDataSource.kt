@@ -1,28 +1,29 @@
 package com.dicoding.thenewyorktimespp.core.data.source.local
 
-import androidx.lifecycle.LiveData
 import com.dicoding.thenewyorktimespp.core.data.source.local.entity.FictionEntity
 import com.dicoding.thenewyorktimespp.core.data.source.local.entity.NonfictionEntity
 import com.dicoding.thenewyorktimespp.core.data.source.local.room.BookDao
+import kotlinx.coroutines.flow.Flow
 
 class LocalDataSource private constructor(private val bookDao: BookDao) {
 
-    fun getAllFiction(): LiveData<List<FictionEntity>> = bookDao.getAllFiction()
+    fun getAllFiction(): Flow<List<FictionEntity>> = bookDao.getAllFiction()
 
-    fun getFavoriteFiction(): LiveData<List<FictionEntity>> = bookDao.getFavoriteFiction()
+    fun getFavoriteFiction(): Flow<List<FictionEntity>> = bookDao.getFavoriteFiction()
 
-    fun insertFiction(fiction: List<FictionEntity>) = bookDao.insertFiction(fiction)
+    suspend fun insertFiction(fiction: List<FictionEntity>) = bookDao.insertFiction(fiction)
 
     fun setFavoriteFiction(fiction: FictionEntity, newState: Boolean) {
         fiction.isFavorite = newState
         bookDao.updateFavoriteFiction(fiction)
     }
 
-    fun getAllNonfiction(): LiveData<List<NonfictionEntity>> = bookDao.getAllNonfiction()
+    fun getAllNonfiction(): Flow<List<NonfictionEntity>> = bookDao.getAllNonfiction()
 
-    fun getFavoriteNonfiction(): LiveData<List<NonfictionEntity>> = bookDao.getFavoriteNonfiction()
+    fun getFavoriteNonfiction(): Flow<List<NonfictionEntity>> = bookDao.getFavoriteNonfiction()
 
-    fun insertNonfiction(nonfiction: List<NonfictionEntity>) = bookDao.insertNonfiction(nonfiction)
+    suspend fun insertNonfiction(nonfiction: List<NonfictionEntity>) =
+        bookDao.insertNonfiction(nonfiction)
 
     fun setFavoriteNonfiction(nonfiction: NonfictionEntity, newState: Boolean) {
         nonfiction.isFavorite = newState

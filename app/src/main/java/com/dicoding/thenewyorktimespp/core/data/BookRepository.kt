@@ -1,7 +1,5 @@
 package com.dicoding.thenewyorktimespp.core.data
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Transformations
 import com.dicoding.thenewyorktimespp.core.data.source.local.LocalDataSource
 import com.dicoding.thenewyorktimespp.core.data.source.remote.RemoteDataSource
 import com.dicoding.thenewyorktimespp.core.data.source.remote.network.ApiResponse
@@ -11,6 +9,8 @@ import com.dicoding.thenewyorktimespp.core.domain.model.Book
 import com.dicoding.thenewyorktimespp.core.domain.repository.IBookRepository
 import com.dicoding.thenewyorktimespp.core.utils.AppExecutors
 import com.dicoding.thenewyorktimespp.core.utils.DataMapper
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 
 class BookRepository private constructor(
     private val remoteDataSource: RemoteDataSource,
@@ -18,29 +18,28 @@ class BookRepository private constructor(
     private val appExecutors: AppExecutors
 ) : IBookRepository {
 
-    override fun getAllFiction(): LiveData<Resource<List<Book>>> =
-        object : NetworkBoundResource<List<Book>, List<FictionItem>>(appExecutors) {
-            override fun loadFromDB(): LiveData<List<Book>> {
-                return Transformations.map(localDataSource.getAllFiction()) {
+    override fun getAllFiction(): Flow<Resource<List<Book>>> =
+        object : NetworkBoundResource<List<Book>, List<FictionItem>>() {
+            override fun loadFromDB(): Flow<List<Book>> {
+                return localDataSource.getAllFiction().map {
                     DataMapper.mapEntitiesToFictionDomain(it)
                 }
             }
 
             override fun shouldFetch(data: List<Book>?): Boolean =
                 data == null || data.isEmpty()
-            //true // ganti dengan true jika ingin selalu mengambil data dari internet
 
-            override fun createCall(): LiveData<ApiResponse<List<FictionItem>>> =
+            override suspend fun createCall(): Flow<ApiResponse<List<FictionItem>>> =
                 remoteDataSource.getAllFiction()
 
-            override fun saveCallResult(data: List<FictionItem>) {
+            override suspend fun saveCallResult(data: List<FictionItem>) {
                 val fictionList = DataMapper.mapResponsesToFictionEntities(data)
                 localDataSource.insertFiction(fictionList)
             }
-        }.asLiveData()
+        }.asFlow()
 
-    override fun getFavoriteFiction(): LiveData<List<Book>> {
-        return Transformations.map(localDataSource.getFavoriteFiction()) {
+    override fun getFavoriteFiction(): Flow<List<Book>> {
+        return localDataSource.getFavoriteFiction().map {
             DataMapper.mapEntitiesToFictionDomain(it)
         }
     }
@@ -50,29 +49,28 @@ class BookRepository private constructor(
         appExecutors.diskIO().execute { localDataSource.setFavoriteFiction(fictionEntity, state) }
     }
 
-    override fun getAllNonfiction(): LiveData<Resource<List<Book>>> =
-        object : NetworkBoundResource<List<Book>, List<NonfictionItem>>(appExecutors) {
-            override fun loadFromDB(): LiveData<List<Book>> {
-                return Transformations.map(localDataSource.getAllNonfiction()) {
+    override fun getAllNonfiction(): Flow<Resource<List<Book>>> =
+        object : NetworkBoundResource<List<Book>, List<NonfictionItem>>() {
+            override fun loadFromDB(): Flow<List<Book>> {
+                return localDataSource.getAllNonfiction().map {
                     DataMapper.mapEntitiesToNonfictionDomain(it)
                 }
             }
 
             override fun shouldFetch(data: List<Book>?): Boolean =
                 data == null || data.isEmpty()
-            // true // ganti dengan true jika ingin selalu mengambil data dari internet*/
 
-            override fun createCall(): LiveData<ApiResponse<List<NonfictionItem>>> =
+            override suspend fun createCall(): Flow<ApiResponse<List<NonfictionItem>>> =
                 remoteDataSource.getAllNonfiction()
 
-            override fun saveCallResult(data: List<NonfictionItem>) {
+            override suspend fun saveCallResult(data: List<NonfictionItem>) {
                 val nonfictionList = DataMapper.mapResponsesToNonfictionEntities(data)
                 localDataSource.insertNonfiction(nonfictionList)
             }
-        }.asLiveData()
+        }.asFlow()
 
-    override fun getFavoriteNonfiction(): LiveData<List<Book>> {
-        return Transformations.map(localDataSource.getFavoriteNonfiction()) {
+    override fun getFavoriteNonfiction(): Flow<List<Book>> {
+        return localDataSource.getFavoriteNonfiction().map {
             DataMapper.mapEntitiesToNonfictionDomain(it)
         }
     }
