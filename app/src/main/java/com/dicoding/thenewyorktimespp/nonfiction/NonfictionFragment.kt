@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.thenewyorktimespp.R
 import com.dicoding.thenewyorktimespp.core.data.Resource
@@ -76,9 +77,14 @@ class NonfictionFragment : Fragment() {
 
     private fun onFictionSelected() {
         bookAdapter.onItemClick = { selectedData ->
-            /*val intent = Intent(activity, DetailTourismActivity::class.java)
-            intent.putExtra(DetailTourismActivity.EXTRA_DATA, selectedData)
-            startActivity(intent)*/
+            val action =
+                NonfictionFragmentDirections.actionNavigationNonfictionToDetailBookActivity(
+                    selectedData,
+                    1
+                )
+            action.let {
+                findNavController().navigate(it)
+            }
         }
     }
 

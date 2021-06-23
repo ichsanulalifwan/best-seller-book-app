@@ -9,17 +9,42 @@
         android:id="@+id/navigation_fiction"
         android:name="com.dicoding.thenewyorktimespp.fiction.FictionFragment"
         android:label="@string/title_fiction"
-        tools:layout="@layout/fragment_fiction" />
+        tools:layout="@layout/fragment_fiction">
+        <action
+            android:id="@+id/action_navigation_fiction_to_detailBookActivity"
+            app:destination="@id/detailBookActivity" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_nonfiction"
         android:name="com.dicoding.thenewyorktimespp.nonfiction.NonfictionFragment"
         android:label="@string/title_nonfiction"
-        tools:layout="@layout/fragment_nonfiction" />
+        tools:layout="@layout/fragment_nonfiction">
+        <action
+            android:id="@+id/action_navigation_nonfiction_to_detailBookActivity"
+            app:destination="@id/detailBookActivity" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_favorite"
         android:name="com.dicoding.thenewyorktimespp.favorite.FavoriteFragment"
         android:label="@string/title_favorite"
-        tools:layout="@layout/fragment_favorite" />
+        tools:layout="@layout/fragment_favorite">
+        <action
+            android:id="@+id/action_navigation_favorite_to_detailBookActivity"
+            app:destination="@id/detailBookActivity" />
+    </fragment>
+
+    <activity
+        android:id="@+id/detailBookActivity"
+        android:name="com.dicoding.thenewyorktimespp.detail.DetailBookActivity"
+        android:label="activity_detail_book"
+        tools:layout="@layout/activity_detail_book">
+        <argument
+            android:name="book"
+            app:argType="com.dicoding.thenewyorktimespp.core.domain.model.Book" />
+        <argument
+            android:name="type"
+            app:argType="integer" />
+    </activity>
 </navigation>
