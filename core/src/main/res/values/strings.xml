@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title">Title</string>
+    <string name="by_author">by</string>
+    <string name="desc_example">Sample of Description text</string>
+</resources>

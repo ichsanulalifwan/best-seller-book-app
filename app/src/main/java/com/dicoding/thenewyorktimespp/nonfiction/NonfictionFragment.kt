@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.thenewyorktimespp.R
-import com.dicoding.thenewyorktimespp.core.data.Resource
-import com.dicoding.thenewyorktimespp.core.ui.BookAdapter
+import com.dicoding.thenewyorktimesapp.core.data.Resource
+import com.dicoding.thenewyorktimesapp.core.ui.BookAdapter
 import com.dicoding.thenewyorktimespp.databinding.FragmentNonfictionBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -39,15 +39,16 @@ class NonfictionFragment : Fragment() {
 
             bookAdapter = BookAdapter()
 
-            nonfictionViewModel.nonfiction.observe(viewLifecycleOwner, { nonfiction ->
+            nonfictionViewModel.nonfiction.observe(viewLifecycleOwner) { nonfiction ->
                 if (nonfiction != null) {
                     when (nonfiction) {
-                        is Resource.Loading -> binding.progressBar.visibility = View.VISIBLE
-                        is Resource.Success -> {
+                        is Resource.Loading<*> -> binding.progressBar.visibility =
+                            View.VISIBLE
+                        is Resource.Success<*> -> {
                             binding.progressBar.visibility = View.GONE
                             bookAdapter.setData(nonfiction.data)
                         }
-                        is Resource.Error -> {
+                        is Resource.Error<*> -> {
                             binding.progressBar.visibility = View.GONE
                             binding.viewError.root.visibility = View.VISIBLE
                             binding.viewError.tvError.text =
@@ -55,7 +56,7 @@ class NonfictionFragment : Fragment() {
                         }
                     }
                 }
-            })
+            }
 
             setupRecyclerView()
             onFictionSelected()

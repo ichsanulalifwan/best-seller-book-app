@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dicoding.thenewyorktimespp.core.ui.BookAdapter
+import com.dicoding.thenewyorktimesapp.core.ui.BookAdapter
 import com.dicoding.thenewyorktimespp.databinding.FragmentFavoriteListBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

@@ -1,7 +1,7 @@
 package com.dicoding.thenewyorktimespp.di
 
-import com.dicoding.thenewyorktimespp.core.domain.usecase.BookInteractor
-import com.dicoding.thenewyorktimespp.core.domain.usecase.BookUseCase
+import com.dicoding.thenewyorktimesapp.core.domain.usecase.BookInteractor
+import com.dicoding.thenewyorktimesapp.core.domain.usecase.BookUseCase
 import com.dicoding.thenewyorktimespp.detail.DetailBookViewModel
 import com.dicoding.thenewyorktimespp.favorite.FavoriteListViewModel
 import com.dicoding.thenewyorktimespp.fiction.FictionViewModel

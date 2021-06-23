@@ -1,9 +1,9 @@
 package com.dicoding.thenewyorktimespp
 
 import android.app.Application
-import com.dicoding.thenewyorktimespp.core.di.databaseModule
-import com.dicoding.thenewyorktimespp.core.di.networkModule
-import com.dicoding.thenewyorktimespp.core.di.repositoryModule
+import com.dicoding.thenewyorktimesapp.core.di.databaseModule
+import com.dicoding.thenewyorktimesapp.core.di.networkModule
+import com.dicoding.thenewyorktimesapp.core.di.repositoryModule
 import com.dicoding.thenewyorktimespp.di.useCaseModule
 import com.dicoding.thenewyorktimespp.di.viewModelModule
 import org.koin.android.ext.koin.androidContext

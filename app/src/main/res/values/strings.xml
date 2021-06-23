@@ -16,7 +16,5 @@
     <string name="url_example">Url Example</string>
     <string name="txt_amazon_product">Amazon Product</string>
     <string name="buy_on_amazon">Buy on Amazon</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="no_data">Empty Data</string>
 </resources>

@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.dicoding.thenewyorktimespp.R
-import com.dicoding.thenewyorktimespp.core.domain.model.Book
+import com.dicoding.thenewyorktimesapp.core.domain.model.Book
 import com.dicoding.thenewyorktimespp.databinding.ActivityDetailBookBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

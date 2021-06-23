@@ -1,8 +1,8 @@
 package com.dicoding.thenewyorktimespp.detail
 
 import androidx.lifecycle.ViewModel
-import com.dicoding.thenewyorktimespp.core.domain.model.Book
-import com.dicoding.thenewyorktimespp.core.domain.usecase.BookUseCase
+import com.dicoding.thenewyorktimesapp.core.domain.model.Book
+import com.dicoding.thenewyorktimesapp.core.domain.usecase.BookUseCase
 
 class DetailBookViewModel(private val bookUseCase: BookUseCase) : ViewModel() {
 

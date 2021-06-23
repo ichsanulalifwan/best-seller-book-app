@@ -42,7 +42,7 @@
         tools:layout="@layout/activity_detail_book">
         <argument
             android:name="book"
-            app:argType="com.dicoding.thenewyorktimespp.core.domain.model.Book" />
+            app:argType="com.dicoding.thenewyorktimesapp.core.domain.model.Book" />
         <argument
             android:name="type"
             app:argType="integer" />
