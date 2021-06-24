@@ -1,7 +1,6 @@
 package com.dicoding.thenewyorktimesapp.core.data.source.remote
 
 import android.util.Log
-import com.dicoding.thenewyorktimesapp.core.BuildConfig
 import com.dicoding.thenewyorktimesapp.core.data.source.remote.network.ApiResponse
 import com.dicoding.thenewyorktimesapp.core.data.source.remote.network.ApiService
 import com.dicoding.thenewyorktimesapp.core.data.source.remote.response.fiction.FictionItem
@@ -63,7 +62,8 @@ class RemoteDataSource(private val apiService: ApiService) {
 
     companion object {
 
-        private const val API_KEY = BuildConfig.API_KEY
+        /*private const val API_KEY = BuildConfig.API_KEY*/
+        private const val API_KEY = "5Z6ve9rfDXe17rWQfdZbYCGFz6FfmCSQ"
         private const val TAG = "RemoteDataSource"
     }
 }
