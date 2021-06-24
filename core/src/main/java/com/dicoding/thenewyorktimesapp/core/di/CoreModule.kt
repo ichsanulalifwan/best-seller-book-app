@@ -8,6 +8,9 @@ import com.dicoding.thenewyorktimesapp.core.data.source.remote.RemoteDataSource
 import com.dicoding.thenewyorktimesapp.core.data.source.remote.network.ApiService
 import com.dicoding.thenewyorktimesapp.core.domain.repository.IBookRepository
 import com.dicoding.thenewyorktimesapp.core.utils.AppExecutors
+import net.sqlcipher.database.SQLiteDatabase
+import net.sqlcipher.database.SupportFactory
+import okhttp3.CertificatePinner
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -23,20 +26,34 @@ val databaseModule = module {
     factory { get<BookDatabase>().bookDao() }
 
     single {
+        val passphrase: ByteArray = SQLiteDatabase.getBytes("book".toCharArray())
+        val factory = SupportFactory(passphrase)
         Room.databaseBuilder(
             androidContext(),
-            BookDatabase::class.java, "Tourism.db"
-        ).fallbackToDestructiveMigration().build()
+            BookDatabase::class.java, "Book.db"
+        ).fallbackToDestructiveMigration()
+            .openHelperFactory(factory)
+            .build()
     }
 }
 
 val networkModule = module {
 
     single {
+
+        val hostname = "api.nytimes.com"
+        val certificatePinner = CertificatePinner.Builder()
+            .add(hostname, "sha256/9sbeva/dVYU/QXkEG0CfdTcK1ga+5SvjzPKRtg3RHNE=")
+            .add(hostname, "sha256/4a6cPehI7OG6cuDZka5NDZ7FR8a60d3auda+sKfg4Ng=")
+            .add(hostname, "sha256/x4QzPSC810K5/cMjb05Qm4k3Bw5zBn4lTdO/nEW/Td4=")
+            .add(hostname, "sha256/vRU+17BDT2iGsXvOi76E7TQMcTLXAqj0+jGPdW7L1vM=")
+            .build()
+
         OkHttpClient.Builder()
             .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
             .connectTimeout(120, TimeUnit.SECONDS)
             .readTimeout(120, TimeUnit.SECONDS)
+            .certificatePinner(certificatePinner)
             .build()
     }
 
