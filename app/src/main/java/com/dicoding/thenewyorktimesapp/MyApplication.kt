@@ -9,9 +9,11 @@ import com.dicoding.thenewyorktimesapp.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
+import org.koin.core.context.stopKoin
 import org.koin.core.logger.Level
 
-open class MyApplication : Application() {
+@Suppress("unused")
+class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         startKoin {
@@ -27,5 +29,10 @@ open class MyApplication : Application() {
                 )
             )
         }
+    }
+
+    override fun onTerminate() {
+        stopKoin()
+        super.onTerminate()
     }
 }

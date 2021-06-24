@@ -18,9 +18,6 @@ class NonfictionFragment : Fragment() {
     private lateinit var bookAdapter: BookAdapter
     private val nonfictionViewModel: NonfictionViewModel by viewModel()
     private var _binding: FragmentNonfictionBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -86,6 +83,11 @@ class NonfictionFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        with(binding.rvNonfiction) {
+            if (this.adapter != null) {
+                this.adapter = null
+            }
+        }
         _binding = null
     }
 }

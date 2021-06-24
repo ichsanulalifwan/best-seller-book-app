@@ -11,6 +11,7 @@ import com.dicoding.thenewyorktimesapp.core.ui.BookAdapter
 import com.dicoding.thenewyorktimesapp.favorite.databinding.FragmentFavoriteListBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
+import org.koin.core.context.unloadKoinModules
 
 class FavoriteListFragment : Fragment() {
 
@@ -108,7 +109,13 @@ class FavoriteListFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        with(binding.rvFav) {
+            if (this.adapter != null) {
+                this.adapter = null
+            }
+        }
         _binding = null
+        unloadKoinModules(favoriteModule)
     }
 
     companion object {

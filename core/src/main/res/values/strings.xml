@@ -3,4 +3,5 @@
     <string name="title">Title</string>
     <string name="by_author">by</string>
     <string name="desc_example">Sample of Description text</string>
+    <string name="img_content_description">Cover Book</string>
 </resources>

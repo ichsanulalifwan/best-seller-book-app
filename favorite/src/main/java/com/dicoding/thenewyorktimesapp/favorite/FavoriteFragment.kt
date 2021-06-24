@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.viewpager2.widget.ViewPager2
 import com.dicoding.thenewyorktimesapp.R
 import com.dicoding.thenewyorktimesapp.favorite.databinding.FragmentFavoriteBinding
 import com.google.android.material.tabs.TabLayout
@@ -15,11 +14,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 
 class FavoriteFragment : Fragment() {
 
-    private lateinit var viewPager: ViewPager2
     private var _binding: FragmentFavoriteBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -39,7 +34,7 @@ class FavoriteFragment : Fragment() {
 
     private fun setupViewPager() {
         val favPagerAdapter = FavPagerAdapter(context as FragmentActivity)
-        viewPager = binding.viewPager
+        val viewPager = binding.viewPager
         viewPager.adapter = favPagerAdapter
         val tabs: TabLayout = binding.tablayout
         TabLayoutMediator(tabs, viewPager) { tab, position ->
@@ -49,6 +44,11 @@ class FavoriteFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        with(binding.viewPager) {
+            if (this.adapter != null) {
+                this.adapter = null
+            }
+        }
         _binding = null
     }
 

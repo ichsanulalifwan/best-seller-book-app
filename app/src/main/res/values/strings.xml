@@ -18,4 +18,5 @@
     <string name="buy_on_amazon">Buy on Amazon</string>
     <string name="no_data">Empty Data</string>
     <string name="detail_book">Detail Book</string>
+    <string name="img_content_description">Cover Book</string>
 </resources>
