@@ -5,7 +5,6 @@
     <string name="title_favorite">Favorite</string>
     <string name="something_wrong">Oops.. something went wrong</string>
     <string name="title">Title</string>
-    <string name="by_author">by</string>
     <string name="desc_example">Sample of Description text</string>
     <string name="txt_rank">Rank</string>
     <string name="txt_author">Author</string>
@@ -13,10 +12,7 @@
     <string name="txt_publisher">Publisher</string>
     <string name="txt_isbn10">ISBN-10</string>
     <string name="txt_isbn13">ISBN-13</string>
-    <string name="url_example">Url Example</string>
-    <string name="txt_amazon_product">Amazon Product</string>
     <string name="buy_on_amazon">Buy on Amazon</string>
-    <string name="no_data">Empty Data</string>
     <string name="detail_book">Detail Book</string>
     <string name="img_content_description">Cover Book</string>
 </resources>
